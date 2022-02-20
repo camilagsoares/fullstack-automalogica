@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { ContainerPosts, CenterPosts } from '../styles/styled'
+import { useNavigate, Link } from 'react-router-dom'
 
 const Posts = () => {
 
     const [listOfPosts, setListOfPosts] = useState([])
+
+    let navigate = useNavigate()
 
     useEffect(() => {
         axios.get("http://localhost:3001/posts").then((res) => {
@@ -20,7 +23,7 @@ const Posts = () => {
                return (
                    <CenterPosts>
                    <ContainerPosts key={key} className="post">
-                    <div className="title">{value.title}</div>
+                    <Link to={`/Posts/${value.id}`} className="title">{value.title}</Link >
                     <div className="body">{value.postText}</div>
                     <p className="footer">{value.username}</p>
                    </ContainerPosts>

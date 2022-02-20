@@ -3,16 +3,19 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { TitleLogin, ScreenContainer, ContainerCreatePost, InputsContainer, StyledField} from '../styles/styled'
 import axios from 'axios'
+import { useNavigate, Link } from 'react-router-dom'
+
 
 const Home = () => {
 
+  let navigate = useNavigate() 
+
   const [listOfPosts, setListOfPosts] = useState([])
-  
   const initialValues = {title: "", postText: "", username: ""}
 
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/posts",data).then((response) => {
-      console.log("Funcionou")
+      navigate("/posts")
     });  }
 
   const validationSchema = Yup.object().shape({
@@ -20,6 +23,7 @@ const Home = () => {
     postText: Yup.string().required("Campo de texto obrigatório"),
     username: Yup.string().min(3).max(15).required("Digite seu nome de usuário")
   })
+
 
     return(
         <ScreenContainer>
