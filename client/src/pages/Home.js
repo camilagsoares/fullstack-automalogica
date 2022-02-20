@@ -1,70 +1,43 @@
-import React from 'react'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-// import { makeStyles } from '@material-ui/core/styles'
-// import IconButton from '@material-ui/core/IconButton'
-// import Input from '@material-ui/core/Input'
-// import FilledInput from '@material-ui/core/FilledInput'
-// import OutlinedInput from '@material-ui/core/OutlinedInput'
-// import InputLabel from '@material-ui/core/InputLabel'
-// import InputAdornment from '@material-ui/core/InputAdornment'
-// import FormHelperText from '@material-ui/core/FormHelperText'
-// import FormControl from '@material-ui/core/FormControl'
-import TextField from '@material-ui/core/TextField'
-import { ContainerCenterLogin, ScreenContainer, TitleLogin, InputsContainer, StyledField } from '../styles/styled'
-import { useState } from 'react'
-import Button from '@mui/material/Button'
+import React, { useState } from 'react'
+import { Animated, FadeAnimations } from 'animated-styled-components'
+import {  TitleLogin} from '../styles/styled'
+import axios from 'axios'
 
 const Home = () => {
 
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
-  return (
-    <ScreenContainer>
+    const login = () => {
+        const data = {username: username, password: password}
+        axios.post("http://localhost:3001/auth/login", data)
+        .then((res) => {
+            console.log(res.data)
+        })
+    }
 
-      <TitleLogin>
+    return (
+        <div>
+  {/* <Animated
+        animation={{
+          in: FadeAnimations.FadeInTop,
+          duration_in: 1
+        }}
+      > */}
+      {/* <TitleLogin>
         <h1>Bem vindo</h1>
-      </TitleLogin>
+      </TitleLogin> */}
+      {/* </Animated> */}
+
+<input type="text" placeholder="Nome de usuário" onChange={(event) => {setUsername(event.target.value)}} />
+<input type="password" placeholder="Senha" onChange={(event) => {setPassword(event.target.value)}} />
+
+<button onClick={login}>Entrar</button>
+<button>Não possui conta? Cadastre-se</button>
 
 
-      <ContainerCenterLogin>
-        <InputsContainer>
-          <Formik
-          // initialValues={initialValues}
-          // onSubmit={onSubmit}
-          // validationSchema={validationSchema}
-          >
-            <Form>
-
-                <TextField
-                  autoComplete="off"
-                  id="outlined-basic"
-                  label="Nome de usuário"
-                  variant="outlined"
-                  name="title"
-                  fullWidth
-                  margin={"normal"}
-                />
-                <ErrorMessage name="title"/>
-                <TextField
-                  autoComplete="off"
-                  id="outlined-basic"
-                  label="Senha"
-                  variant="outlined"
-                  fullWidth
-                  margin={"normal"}
-                />
-                <ErrorMessage name=""/>
-
-              <Button variant="contained" fullWidth margin="normal">Entrar</Button> <br /> <br />
-              <Button variant="outlined" fullWidth margin="normal">Não possui conta? Cadastre-se</Button>
-            </Form>
-
-          </Formik>
-        </InputsContainer>
-      </ContainerCenterLogin>
-
-    </ScreenContainer>
-  )
+        </div>
+    )
 }
 
 export default Home
