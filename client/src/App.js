@@ -1,6 +1,6 @@
 import React from 'react'
 import { GlobalStyles } from './styles/GlobalStyles'
-import Home from './pages/Home'
+import HomePage from './pages/Home'
 import Posts from './pages/Posts'
 import Services from './pages/Services'
 import Post from './pages/Post'
@@ -18,7 +18,7 @@ const App = () => {
       <BrowserRouter>
       <Link to="/CreatePost">Criar um post</Link>
       <Routes>
-        <Route path="/" exact element={<Home />} />
+        {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/posts" exact element={<Posts />} />
         <Route path="/services" exact element={<Services />} />
         <Route path="/createPost" exact element={<CreatePost />} />
