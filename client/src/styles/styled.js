@@ -117,7 +117,7 @@ font-size: 2rem;
 top: 3vw;
 position: relative;
 color: #1A1B1B;
-
+text-align: center;
 &.othesPages{
   font-size: 1.4rem;
 }
