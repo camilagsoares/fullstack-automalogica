@@ -1,1 +1,0 @@
-export const BASE_URL = "https://full-stack-api-pedrotech.herokuapp.com"
