@@ -1,10 +1,16 @@
-# Automalógica - FullStack
+<h1 align="center">
+  <br> Automalógica - FullStack </h1>
 
-Sobre o projeto:
+<p align="center">
+  <a href="/">Visite o projeto</a>
+</p>
+
+ 💻 Sobre o projeto:
 
 Aplicação fullstack, onde existe um Feed de Posts,que você pode publicar,curtir, e comentar. Para vizualizar as postagens é necessário realizar um registro e logar.
 
-Tecnologias usadas:
+🛠 Tecnologias usadas
+
 - ReactJS
 - NodeJS
 - ExpressJS
