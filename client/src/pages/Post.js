@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { ContainerCreatePost, ContainerPosts,PostsIndividuals, ContainerCommentsRight } from '../styles/styled'
+import { ContainerCreatePost, ContainerPosts,PostsIndividuals, CommentsRight, Comment} from '../styles/styled'
 
 const Post = () => {
 
@@ -26,7 +26,7 @@ const Post = () => {
         axios.post("http://localhost:3001/comments/", {commentBody: newComment, PostId: id},
         {
             headers: {
-                accessToken: sessionStorage.getItem("accessToken")
+                accessToken: localStorage.getItem("accessToken")
             }
         }
         )
@@ -34,7 +34,7 @@ const Post = () => {
             if(res.data.error){
                 console.log(res.data.error)
             } else {
-                const commentToAd = {commentBody: newComment}
+                const commentToAd = {commentBody: newComment, username: res.data.username}
                 setComments([...comments, commentToAd])
                 setNewComment("")
             }
@@ -44,19 +44,19 @@ const Post = () => {
 
     return (
         <div>
-        <ContainerCreatePost className="postPage">
-            <PostsIndividuals>
+        {/* <ContainerCreatePost className="postPage"> */}
+            <ContainerPosts className="post">
             <div className="leftSide">
                 <div className="title">{postObj.title}</div>
                 <div className="postText">{postObj.postText}</div>
                 <div className="footer">{postObj.username}</div>
+            </div>           
+            </ContainerPosts>
 
-            </div>
-           
-            </PostsIndividuals>
+       
+        {/* </ContainerCreatePost> */}
 
-            
-        <ContainerCommentsRight className="rightSide">
+        <CommentsRight>
                 <div className="addCommentContainer">
                     <input 
                         type="text" 
@@ -71,14 +71,13 @@ const Post = () => {
                 <div className="listOfComments"></div>
                         {comments.map((comment,key) => {
                             return(
-                                <div key={key} className="comment">
+                                <Comment key={key} className="comment">
                                     {comment.commentBody}
-                                </div>
+                                    <label>Usuário: {comment.username}</label>
+                                </Comment>
                             )
                         })}
-                </ContainerCommentsRight>
-        </ContainerCreatePost>
-      
+                </CommentsRight>
         </div>
     )
 }
