@@ -1,8 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Animated, FadeAnimations } from 'animated-styled-components'
 import { TitleLogin, ScreenContainer } from '../styles/styled'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../constants/url'
+
 
 const Home = () => {
 
@@ -13,14 +15,14 @@ const Home = () => {
 
   const login = () => {
     const data = { username: username, password: password }
-    axios.post("http://localhost:3001/auth/login", data)
+    axios.post(`${BASE_URL}/auth/login`, data)
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error)
         } else {
           localStorage.setItem("accessToken", response.data)
           alert(`Seja bem vindo, ${username}`)
-          navigate("/posts");
+          navigate("/Services");
         }
       })
   }

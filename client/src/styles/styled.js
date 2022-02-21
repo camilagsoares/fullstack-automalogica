@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const CenterPosts = styled.div`
 align-items: center;
@@ -37,7 +36,7 @@ text-decoration: none;
   font-size: 20px;
     
 :hover{
-    background-color: #4D954A;
+  background-color: #4D954A;
 }
 }
 
@@ -89,10 +88,10 @@ input{
   border: 1px solid #033E89;
   background-color: white;
   border-radius: 2px;
-  :focus{
+:focus{
     background-color: #94B1D6;
-  }
-  ::placeholder{
+}
+::placeholder{
     color: #1D1D1D;
   }
 }
@@ -129,7 +128,6 @@ span{
 
 export const ContainerSign = styled.div`
 width: 20vw;
-
 `
 
 
@@ -141,9 +139,6 @@ top: 3vw;
 position: relative;
 color: #1A1B1B;
 text-align: center;
-/* &.othesPages{
-  font-size: 1.4rem;
-} */
 
 &.createPostPage{
   top: -3vw;
@@ -207,74 +202,6 @@ width: 39vw;
 height: 20vw;
 background-color: white;
 `
-export const ContainerCommentsRight = styled.div`
-
-&.rightSide {
-  flex: 50%;
-  height: calc(100vh - 70px);
-  display: grid;
-  place-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-&.rightSide .addCommentContainer {
-  flex: 20%;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  margin-top: 25px;
-}
-
-&.addCommentContainer input,
-button {
-  width: 200px;
-  height: 50px;
-  border-radius: 8px;
-  border: none;
-}
-
-&.addCommentContainer button {
-  background-color: dodgerblue;
-  color: white;
-}
-
-&.addCommentContainer input {
-  border: 2px solid dodgerblue;
-}
-
-&.rightSide .listOfComments {
-  flex: 80%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-&.listOfComments .comment {
-  width: 70%;
-  height: auto;
-  padding: 30px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-#individual {
-  height: 500px;
-  width: 600px;
-}
-
-#individual .title,
-#individual .footer {
-  font-size: 30px;
-}
-
-#individual .body {
-  font-size: 25px;
-}
-
-`
 
 export const ContainerCenterSignUp = styled.div`
 display: flex;
@@ -305,6 +232,71 @@ display: flex;
 align-items: flex-end;
 justify-content: flex-end;
 
+input{
+  width: 20vw;
+  height: 3vw;
+  margin: 10px;
+  outline: none;
+  font-family: 'Roboto';
+  text-indent: 20px;
+  font-size: 1rem;
+  border: 1px solid #033E89;
+  background-color: white;
+  border-radius: 2px;
+  top: -13vw;
+  left: 13vw;
+  position: relative;
+:focus{
+    background-color: #94B1D6;
+}
+::placeholder{
+    color: #1D1D1D;
+  }
+}
+
+`
+
+export const ContainerCommentRight = styled.div`
+position: relative;
+top: 7vw;
+`
+
+export const ContainerComment = styled.div`
+width: 500px;
+height: 300px;
+background-color: white;
+border-radius: 4px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+margin: 30px;
+p{
+  &.title{
+ background-color : #00398A;
+ width: 500px;
+ text-align: center;
+ height: 40px;
+ color: white;
+ line-height: 2.4;
+ font-family: 'Roboto';
+}
+
+&.body{
+  padding: 40px;
+ font-family: 'Roboto';
+}
+
+&.username{
+  background-color : #00398A;
+ width: 500px;
+ text-align: center;
+ height: 40px;
+ color: white;
+ line-height: 2.4;
+ font-family: 'Roboto';
+ top: 7vw;
+ position: relative;
+ border-radius: 2px;
+}
+}
 `
 
 export const Comment = styled.div`
@@ -315,7 +307,6 @@ margin: 30px;
 `
 
 export const CreatePostTitle = styled.div`
-
 margin: 10px;
 button{
   width: 200px;
@@ -332,4 +323,15 @@ button{
   background-color: #00398A;
 }
 }
+`
+
+export const TitleCreatePost = styled.div`
+display: flex;
+align-items: flex-end;
+justify-content: flex-end;
+font-family: 'Poppins';
+top: -20vw;
+left: 30vw;
+position: relative;
+font-size: 24px;
 `
