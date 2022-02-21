@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import { TitleLogin, ScreenContainer, ContainerCreatePost, InputsContainer, StyledField} from '../styles/styled'
+import { TitleLogin, ScreenContainer, ContainerCreatePost, CenterPosts} from '../styles/styled'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
+import { Animated, FadeAnimations } from 'animated-styled-components'
 
 
 const Home = () => {
@@ -24,13 +25,30 @@ const Home = () => {
     username: Yup.string().min(3).max(15).required("Digite seu nome de usuário")
   })
 
+  const goToFeed = () => {
+    navigate("/posts")
+  }
 
     return(
         <ScreenContainer>
-           <TitleLogin className="othesPages">
-        <h1>Crie um post</h1>
-      </TitleLogin>
 
+<Animated
+        animation={{
+          in: FadeAnimations.FadeInTop,
+          duration_in: 1
+        }}
+      >
+           <TitleLogin className="createPostPage">
+        <h1 >Crie um post</h1>
+      </TitleLogin>
+      </Animated>
+
+      <Animated
+        animation={{
+          in: FadeAnimations.FadeInBottom,
+          duration_in: 1
+        }}
+      >
 <ContainerCreatePost>
           <Formik 
         initialValues={initialValues}
@@ -46,7 +64,7 @@ const Home = () => {
           fullWidth
           margin="normal"
           autoComplete="off"
-          
+          placeholder="Título"
           />
 <ErrorMessage name="title" component="span"/>
 <Field
@@ -58,6 +76,7 @@ const Home = () => {
          margin="normal"
          autoComplete="off"
         className="postContent"
+        placeholder="Conteúdo"
           />
           
               
@@ -71,18 +90,25 @@ const Home = () => {
          fullWidth
          margin="normal"
          autoComplete="off"
-          
+         placeholder="Nome de usuário"
+
           />
 
                 <ErrorMessage name="username" component="span"/>
-<br/> <br/> <br/> <br/> <br /> <br />
-<button type="submit">Criar post</button>
+<br /><br />
 
+<CenterPosts><button type="submit">Criar post</button>
+</CenterPosts>
+
+<CenterPosts><button type="submit" className="feed" onClick={goToFeed}>Ir para feed posts</button>
+</CenterPosts>
         </Form>
       </Formik>
 
   
       </ContainerCreatePost>
+      </Animated>
+
         </ScreenContainer>
     )
 }
