@@ -2,7 +2,7 @@
   <br> Automalógica - FullStack </h1>
 
 <p align="center">
-  <a href="/">Visite o projeto</a>
+  <a href="https://fullstack-automalogica.surge.sh/">Visite o projeto</a>
 </p>
 
  💻 Sobre o projeto:
